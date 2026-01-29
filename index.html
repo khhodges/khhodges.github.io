@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOOMC | The Sovereignty Engine</title>
+    <style>
+        body { background-color: #0a0a0a; color: #d4af37; font-family: 'Courier New', Courier, monospace; line-height: 1.6; padding: 50px; }
+        .container { max-width: 800px; margin: auto; border: 1px solid #d4af37; padding: 30px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+        h1 { text-align: center; letter-spacing: 5px; text-transform: uppercase; border-bottom: 2px solid #d4af37; padding-bottom: 10px; }
+        .manifesto { font-style: italic; color: #aaa; margin-bottom: 30px; }
+        .terminal { background: #000; color: #0f0; padding: 15px; border-radius: 5px; font-size: 0.9em; margin: 20px 0; border: 1px solid #333; }
+        button { background: #d4af37; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        button:hover { background: #fff; box-shadow: 0 0 15px #fff; }
+        .section-title { color: #fff; text-decoration: underline; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CLOOMC</h1>
+    <p style="text-align: center;"><b>Capability-Limited | Object-Oriented | Machine-Code</b></p>
+    
+    <div class="manifesto">
+        "Democracy requires Type Segregation. We are attaching the Digital Shadow to the Individual, securing the Singularity through the laws of the transistor."
+    </div>
+
+    <div class="section-title">MISSION: CIVILIZING CYBERSPACE</div>
+    <p>The von Neumann era is over. In a flat memory world, you are overwriteable. In CLOOMC-land, your <b>Private Namespace</b> is a physical fortress, reachable only by your <b>Golden Token</b>.</p>
+
+    <div class="section-title">THE SOVEREIGNTY HANDSHAKE</div>
+    <div class="terminal" id="terminal-output">
+        [SYSTEM]: Awaiting Biological Bridge...<br>
+        [STATUS]: No Ring Detected.
+    </div>
+    
+    <input type="text" id="userHandle" placeholder="Enter Desired Handle (e.g. Citizen.Kenneth)" style="width: 100%; padding: 10px; margin-bottom: 10px; background: #222; border: 1px solid #d4af37; color: #fff;">
+    <button onclick="mintToken()">MINT GOLDEN TOKEN & ATTACH SHADOW</button>
+
+    <div id="token-display" style="display:none; margin-top:20px; padding:15px; border: 1px dashed #0f0; background: #050505;">
+        <p style="color:#0f0;"><b>SUCCESS: GOLDEN TOKEN ISSUED</b></p>
+        <p id="token-raw" style="font-size: 0.7em; word-break: break-all; color: #0f0;"></p>
+        <p><i>Save this token to your Sovereignty Ring. This is your only key to the Forge.</i></p>
+    </div>
+
+    <div class="section-title">THE ARCHITECTURAL WATERFRONT</div>
+    <ul>
+        <li><b>The Library:</b> Industrial Strength CS & Lambda Calculus.</li>
+        <li><b>The Basement:</b> The Six Church Instructions & G-Bit Microcode.</li>
+        <li><b>The Surface:</b> Type-Segregated 130nm Silicon Specifications.</li>
+    </ul>
+</div>
+
+<script>
+    async function mintToken() {
+        const handle = document.getElementById('userHandle').value || "ANONYMOUS";
+        const term = document.getElementById('terminal-output');
+        
+        term.innerHTML += `<br>[LOAD]: Validating Handle ${handle}...`;
+        await new Promise(r => setTimeout(r, 800));
+        term.innerHTML += `<br>[SWITCH]: Creating Private Namespace...`;
+        await new Promise(r => setTimeout(r, 800));
+        term.innerHTML += `<br>[SAVE]: Binding Biological Shadow...`;
+
+        const tokenData = { handle: handle, namespace: `NS.CLOOMC.${handle.toUpperCase()}`, issued: new Date().toISOString() };
+        const rawToken = btoa(JSON.stringify(tokenData));
+
+        document.getElementById('token-display').style.display = 'block';
+        document.getElementById('token-raw').innerText = rawToken;
+        term.innerHTML += `<br>[COMPLETE]: Shadow Physically Attached.`;
+    }
+</script>
+
+</body>
+</html>
